@@ -198,14 +198,15 @@ int main (int argc, char *argv[]) {
 						}
 						close(sock_s);
 
-
 						sock_cs = socket(AF_INET,SOCK_STREAM,0);
 						addrCS.sin_family = AF_INET;
 						addrCS.sin_addr.s_addr = inet_addr("192.168.157.129");
-						addrCS.sin_port = htons(6001); 
-
+						addrCS.sin_port = htons(6001);
+ 						
+						on=1;
 						if(setsockopt(sock_cs, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on))<0)
 							erreur("setsock"); 
+
 						if (bind (sock_cs,(struct sockaddr *) &addrCS,(sizeof(struct sockaddr_in))) == -1)
 							erreur("Erreur de nommage"); 
 						if (getsockname (sock_cs,(struct sockaddr *) &addrCS,&len_addr_client) == -1) 
@@ -234,8 +235,9 @@ int main (int argc, char *argv[]) {
 							erreur("write");
 
 						printf("\nConnexion terminée\n");
-						close(newsock_cs);
 						purger();
+						memset(buf,0,TAILLE_BUF);
+						close(newsock_cs);
 					}
 					else if(strcmp(action, "2")==0){
 						printf("/*****************************/\n");
