@@ -157,7 +157,7 @@ int main (int argc, char *argv[]) {
 				/****Boucle pour pouvoir avoir plusieurs demandes à la suite****/
 				for(;;){
 					sock_s = socket(AF_INET,SOCK_STREAM,0);
-					printf("\nPour demander un scan à un client tapez 1\nPour afficher le dernier résultat reçu tapez 2 (imposible si aucun scan n'a été demandé auparavant.\n");
+					printf("\nPour demander un scan à un client tapez 1\nPour afficher le dernier résultat reçu tapez 2 (imposible si aucun scan n'a été demandé auparavant.)\n");
 					fgets(action, 2, stdin);
 
 					if(strcmp(action, "1")==0){
@@ -193,20 +193,20 @@ int main (int argc, char *argv[]) {
 							erreur("read");
 						printf("%s \n",buf);
 						if(buf=="Script inconnu"){
-							
 							printf("Connexion coupée\n");
 						}
 						close(sock_s);
 
 						sock_cs = socket(AF_INET,SOCK_STREAM,0);
-						addrCS.sin_family = AF_INET;
-						addrCS.sin_addr.s_addr = inet_addr("192.168.157.129");
-						addrCS.sin_port = htons(6001);
- 						
+
 						on=1;
 						if(setsockopt(sock_cs, SOL_SOCKET, SO_REUSEADDR, &on, sizeof(on))<0)
 							erreur("setsock"); 
 
+						addrCS.sin_family = AF_INET;
+						addrCS.sin_addr.s_addr = inet_addr("192.168.157.129");
+						addrCS.sin_port = htons(6001);
+ 						
 						if (bind (sock_cs,(struct sockaddr *) &addrCS,(sizeof(struct sockaddr_in))) == -1)
 							erreur("Erreur de nommage"); 
 						if (getsockname (sock_cs,(struct sockaddr *) &addrCS,&len_addr_client) == -1) 
