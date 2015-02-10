@@ -1,0 +1,34 @@
+#!/bin/bash
+rose='\e[1;31m'
+bleu='\e[1;34m'
+neutre='\e[0;m'
+
+# Affichage du hostname
+echo -ne "${rose}Le Hostname est:${bleu}\n"
+hostname
+
+# Affichage des adresse IP des interfaces réseaux
+interfaces=$(ifconfig | grep Link | awk -F" " '{print $1}')
+for interface in $interfaces
+do
+	echo -ne  "\n${rose}L'adresse IP de ${bleu}$interface ${rose}est:${bleu}\n"
+	ip addr | grep inet | grep $interface$ | awk -F" " '{print $2}'
+done
+
+# Affichage du nom de la distribution
+echo -ne "\n${rose}La distribution est:${bleu}\n"
+lsb_release -d | awk -F":	" '{print $2}'
+
+# Affichage de la version la distribution
+echo -ne "\n${rose}La version de la distribution est:${bleu}\n"
+lsb_release -r | awk -F" " '{print $2}'
+
+# Affichage de la version du noyau
+echo -ne "\n${rose}La version du noyau est:${bleu}\n"
+uname -sr
+
+# Affichage de la table de routage de la machine
+echo -ne "\n${rose}La table de routage est:${bleu}\n"
+route
+
+echo -ne "${neutre}"

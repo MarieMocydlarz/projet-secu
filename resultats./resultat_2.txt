@@ -1,0 +1,5 @@
+
+ [1;31mLes utilisateurs humains sont:[1;34m
+root
+esclave
+[0;m

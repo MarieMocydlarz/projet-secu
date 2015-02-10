@@ -1,0 +1,24 @@
+[1;31mLe Hostname est:[1;34m
+esclave
+
+[1;31mL'adresse IP de [1;34meth0 [1;31mest:[1;34m
+192.168.157.139/24
+
+[1;31mL'adresse IP de [1;34mlo [1;31mest:[1;34m
+127.0.0.1/8
+
+[1;31mLa distribution est:[1;34m
+Ubuntu 14.10
+
+[1;31mLa version de la distribution est:[1;34m
+14.10
+
+[1;31mLa version du noyau est:[1;34m
+Linux 3.16.0-29-generic
+
+[1;31mLa table de routage est:[1;34m
+Table de routage IP du noyau
+Destination     Passerelle      Genmask         Indic Metric Ref    Use Iface
+default         192.168.157.2   0.0.0.0         UG    0      0        0 eth0
+192.168.157.0   *               255.255.255.0   U     1      0        0 eth0
+[0;m
