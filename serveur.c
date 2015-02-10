@@ -181,7 +181,7 @@ int main (int argc, char *argv[]) {
 							erreur("read");
 						printf("Message recu de %s : %s \n",inet_ntoa(addrC.sin_addr),buf);
 
-						printf("Scans disponibles :\n\t1.Connaitre les informations du clients (hostname, version, adresse IP, etc...) \n\t2. Connaitre les noms des utilisateurs de la machine \n\t3. Savoir quels paquets sont installés et quels paquets sont à mettre à jour \n\t4. Connaitre la date et l'heure de la dernière connexion locale\n\n"); 
+						printf("Scans disponibles :\n\t1.Connaitre les informations du clients (hostname, version, adresse IP, etc...) \n\t2. Connaitre les noms des utilisateurs de la machine \n\t3. Savoir quels paquets sont installés et quels paquets sont à mettre à jour \n\t4. Connaitre la date et l'heure de la dernière connexion locale\n\t5.Vérifier l'intégrité de bin, sbin, usr/bin et usr/sbin \n\t6.John The ripper\n\t7.Savoir quel service écoute sur quel port. \n\n"); 
 						//On attend le choix
 						scanf("%d",&choix);
 						//On met le choix au bon format
@@ -224,6 +224,7 @@ int main (int argc, char *argv[]) {
 
  						sprintf(resultats,"%s/resultat_%s.txt",ip,buf);
 						res=fopen(resultats, "a+");
+						rewind(res);
 						while (strcmp(buf,"Fin du script.")!=0){
 							if(read(newsock_cs,buf,TAILLE_BUF)<0)
 								erreur("read");
